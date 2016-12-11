@@ -27,12 +27,8 @@ public class GrandEntierListe implements IGrandEntier {
         Integer c1, c2;
 
         while(i1.hasPrevious() && i2.hasPrevious()) {
-
             c1 = i1.previous();
             c2 = i2.previous();
-
-            System.out.println("c1 = " + c2);
-            System.out.println("c2 = " + c2);
 
             if(c1 + c2 + retenue > 9) {
                 result.add((c1 + c2 + retenue) % 10);
