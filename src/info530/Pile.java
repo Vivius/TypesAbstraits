@@ -11,25 +11,35 @@ public class Pile<T> {
     private int capacite;
 
     public Pile(int capacite) {
-        pile = new Stack<T>();
+        this.pile = new Stack<T>();
         this.capacite = capacite;
     }
 
+    /**
+     * Ajoute un élément dans la pile.
+     * Retourne false si on dépasse la capacité définie.
+     * @param element
+     * @return
+     */
     public boolean ajouter(T element) {
-        if(pile.size() < this.capacite) {
-            pile.push(element);
+        if(this.pile.size() < this.capacite) {
+            this.pile.push(element);
             return true;
         } else {
             return false;
         }
     }
 
+    /**
+     * Retourne l'élément se trouvant au sommet de la pile.
+     * @return
+     */
     public T retirer() {
-        return pile.pop();
+        return this.pile.pop();
     }
 
     @Override
     public String toString() {
-        return pile.toString();
+        return this.pile.toString();
     }
 }
