@@ -30,13 +30,12 @@ public class Main {
         chiffres_a.add(2);
         chiffres_a.add(5);
         chiffres_a.add(8);
-        chiffres_a.add(3);
 
         List<Integer> chiffres_b = new ArrayList<>();
         chiffres_b.add(9);
         chiffres_b.add(9);
 
-        Integer[] chiffres_c = {9,9,8,7,6,9,8,5,4};
+        Integer[] chiffres_c = {9,9,8,7,6,9,8,5};
 
         IGrandEntier e1 = new GrandEntier(chiffres_a);
         IGrandEntier e2 = new GrandEntier(chiffres_c);
