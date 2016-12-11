@@ -2,7 +2,6 @@ package info530;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Main {
 
@@ -31,16 +30,20 @@ public class Main {
         chiffres_a.add(2);
         chiffres_a.add(5);
         chiffres_a.add(8);
+        chiffres_a.add(3);
 
         List<Integer> chiffres_b = new ArrayList<>();
-        chiffres_b.add(2);
-        chiffres_b.add(5);
+        chiffres_b.add(9);
+        chiffres_b.add(9);
 
-        Integer[] chiffres_c = {1,2};
+        Integer[] chiffres_c = {9,9,8,7,6,9,8,5,4};
 
         IGrandEntier e1 = new GrandEntier(chiffres_a);
         IGrandEntier e2 = new GrandEntier(chiffres_c);
-        e1.somme(e2);
-        System.out.print("e1 + e2 = " + e1);
+        //e1.somme(e2);
+        System.out.println("e1 + e2 = " + e1);
+
+        e1.produit(e2);
+        System.out.println("e1 * e2 = " + e1);
     }
 }

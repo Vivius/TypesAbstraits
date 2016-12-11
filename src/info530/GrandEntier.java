@@ -9,10 +9,12 @@ import java.util.*;
 public class GrandEntier implements IGrandEntier {
     private List<Integer> chiffres;
 
+    // Implémentation avec une liste.
     public GrandEntier(List<Integer> chiffres) {
         this.chiffres = chiffres;
     }
 
+    // Implémentation avec un tableau.
     public GrandEntier(Integer[] chiffres) {
         this.chiffres = Arrays.asList(chiffres);
     }
@@ -42,10 +44,7 @@ public class GrandEntier implements IGrandEntier {
         }
 
         // On regarde ce qu'il reste à traiter.
-        if(this.getChiffres().size() == e2.getChiffres().size()) {
-            if(retenue != 0)
-                result.add(retenue);
-        } else if(this.getChiffres().size() > e2.getChiffres().size()) {
+        if(this.getChiffres().size() > e2.getChiffres().size()) {
             i3 = i1;
         } else {
             i3 = i2;
@@ -63,6 +62,9 @@ public class GrandEntier implements IGrandEntier {
             }
         }
 
+        if(retenue != 0)
+            result.add(retenue);
+
         // On inverse l'ordre de la liste car on l'a remplie de gauche à droite et pas de droite à gauche...
         Collections.reverse(result);
         this.chiffres = result;
@@ -70,12 +72,26 @@ public class GrandEntier implements IGrandEntier {
 
     @Override
     public void produit(IGrandEntier e) {
+        // Copie du nombre de base.
+        IGrandEntier e1 = new GrandEntier(this.getChiffres());
+        // Chiffre 1.
+        IGrandEntier un = new GrandEntier(new Integer[] {1});
+        // Compteur partant de 1
+        IGrandEntier compteur = new GrandEntier(new Integer[] {1});
 
+        while (!compteur.toString().equals(e.toString())) {
+            compteur.somme(un);
+            this.somme(e1);
+        }
     }
 
     @Override
     public String impression() {
-        return chiffres.toString();
+        String nombre = "";
+        for(Integer i : getChiffres()) {
+            nombre += i;
+        }
+        return nombre;
     }
 
     @Override
