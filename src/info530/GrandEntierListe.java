@@ -1,6 +1,7 @@
 package info530;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -25,6 +26,7 @@ public class GrandEntierListe implements IGrandEntier {
         Integer retenue = 0;
         Integer c1, c2;
 
+        // On fait l'addition unité par unité en gardant la retenue...
         while(i1.hasPrevious() && i2.hasPrevious()) {
             c1 = i1.previous();
             c2 = i2.previous();
@@ -38,6 +40,7 @@ public class GrandEntierListe implements IGrandEntier {
             }
         }
 
+        // On regarde ce qu'il reste à traiter.
         if(this.getChiffres().size() == e2.getChiffres().size()) {
             if(retenue != 0)
                 result.add(retenue);
@@ -47,6 +50,7 @@ public class GrandEntierListe implements IGrandEntier {
             i3 = i2;
         }
 
+        // On traite la suite d'un des 2 nombre si elle existe.
         while(i3.hasPrevious()) {
             c1 = i1.previous();
             if(c1 + retenue > 9) {
@@ -58,6 +62,8 @@ public class GrandEntierListe implements IGrandEntier {
             }
         }
 
+        // On inverse l'ordre de la liste car on l'a remplie de gauche à droite et pas de droite à gauche...
+        Collections.reverse(result);
         this.chiffres = result;
     }
 
