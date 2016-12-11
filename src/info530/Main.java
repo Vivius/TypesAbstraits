@@ -1,5 +1,9 @@
 package info530;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -23,6 +27,18 @@ public class Main {
         /**
          * EXERCICE 2
          */
+        List<Integer> chiffres1 = new ArrayList<>();
+        chiffres1.add(2);
+        chiffres1.add(5);
+        chiffres1.add(8);
 
+        List<Integer> chiffres2 = new ArrayList<>();
+        chiffres2.add(2);
+        chiffres2.add(5);
+
+        IGrandEntier e1 = new GrandEntierListe(chiffres1);
+        IGrandEntier e2 = new GrandEntierListe(chiffres2);
+        e1.somme(e2);
+        System.out.print(e1.getChiffres());
     }
 }

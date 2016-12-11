@@ -3,6 +3,7 @@ package info530;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Vincent on 11/12/2016.
@@ -17,21 +18,25 @@ public class GrandEntierListe implements IGrandEntier {
 
     @Override
     public void somme(IGrandEntier e2) {
-        Iterator i1 = this.getChiffres().iterator(); // Iterator premier nombre.
-        Iterator i2 = e2.getChiffres().iterator(); // Iterator second nombre.
-        Iterator i3 = i1; // Iterator final
+        ListIterator<Integer> i1 = this.getChiffres().listIterator(this.getChiffres().size()); // Iterator premier nombre.
+        ListIterator<Integer> i2 = e2.getChiffres().listIterator(e2.getChiffres().size()); // Iterator second nombre.
+        ListIterator<Integer> i3 = i1; // Iterator final
         List<Integer> result = new ArrayList<>(); // Resultat.
 
         Integer retenue = 0;
         Integer c1, c2;
 
-        while(i1.hasNext() && i2.hasNext()) {
-            c1 = (Integer) i1.next();
-            c2 = (Integer) i2.next();
+        while(i1.hasPrevious() && i2.hasPrevious()) {
+
+            c1 = i1.previous();
+            c2 = i2.previous();
+
+            System.out.println("c1 = " + c2);
+            System.out.println("c2 = " + c2);
 
             if(c1 + c2 + retenue > 9) {
-                retenue = c1 + c2 - 9;
-                result.add(9);
+                result.add((c1 + c2 + retenue) % 10);
+                retenue = (c1 + c2 + retenue) / 10;
             } else {
                 result.add(c1 + c2 + retenue);
                 retenue = 0;
@@ -47,16 +52,18 @@ public class GrandEntierListe implements IGrandEntier {
             i3 = i2;
         }
 
-        while(i3.hasNext()) {
-            c1 = (Integer) i1.next();
+        while(i3.hasPrevious()) {
+            c1 = i1.previous();
             if(c1 + retenue > 9) {
-                retenue = c1 - 9;
-                result.add(9);
+                retenue = c1 + retenue - 9;
+                result.add(0);
             } else {
                 result.add(c1 + retenue);
                 retenue = 0;
             }
         }
+
+        this.chiffres = result;
     }
 
     @Override
