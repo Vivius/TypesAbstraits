@@ -10,7 +10,7 @@ public class Main {
         /**
          * EXERCICE 1
          */
-        Pile<Integer> pile = new Pile<Integer>(10);
+        Pile<Integer> pile = new Pile<>(10);
         pile.ajouter(1);
         pile.ajouter(2);
         pile.ajouter(3);
@@ -22,23 +22,25 @@ public class Main {
         pile.ajouter(9);
         pile.ajouter(10);
         pile.ajouter(11);
-        System.out.print(pile);
+        System.out.println(pile);
 
         /**
          * EXERCICE 2
          */
-        List<Integer> chiffres1 = new ArrayList<>();
-        chiffres1.add(2);
-        chiffres1.add(5);
-        chiffres1.add(8);
+        List<Integer> chiffres_a = new ArrayList<>();
+        chiffres_a.add(2);
+        chiffres_a.add(5);
+        chiffres_a.add(8);
 
-        List<Integer> chiffres2 = new ArrayList<>();
-        chiffres2.add(2);
-        chiffres2.add(5);
+        List<Integer> chiffres_b = new ArrayList<>();
+        chiffres_b.add(2);
+        chiffres_b.add(5);
 
-        IGrandEntier e1 = new GrandEntierListe(chiffres1);
-        IGrandEntier e2 = new GrandEntierListe(chiffres2);
+        Integer[] chiffres_c = {1,2};
+
+        IGrandEntier e1 = new GrandEntier(chiffres_a);
+        IGrandEntier e2 = new GrandEntier(chiffres_c);
         e1.somme(e2);
-        System.out.print(e1.getChiffres());
+        System.out.print("e1 + e2 = " + e1);
     }
 }

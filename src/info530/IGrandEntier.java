@@ -9,7 +9,7 @@ import java.util.List;
 public interface IGrandEntier {
     void somme(IGrandEntier e);
     void produit(IGrandEntier e);
-    void afficher();
+    String impression();
 
     List<Integer> getChiffres();
 }

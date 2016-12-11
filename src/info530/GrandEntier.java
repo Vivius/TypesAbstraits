@@ -1,24 +1,25 @@
 package info530;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Created by Vincent on 11/12/2016.
  */
 
-public class GrandEntierListe implements IGrandEntier {
+public class GrandEntier implements IGrandEntier {
     private List<Integer> chiffres;
 
-    public GrandEntierListe(List<Integer> chiffres) {
+    public GrandEntier(List<Integer> chiffres) {
         this.chiffres = chiffres;
+    }
+
+    public GrandEntier(Integer[] chiffres) {
+        this.chiffres = Arrays.asList(chiffres);
     }
 
     @Override
     public void somme(IGrandEntier e2) {
-        ListIterator<Integer> i1 = this.getChiffres().listIterator(this.getChiffres().size()); // Iterator premier nombre.
+        ListIterator<Integer> i1 = getChiffres().listIterator(getChiffres().size()); // Iterator premier nombre.
         ListIterator<Integer> i2 = e2.getChiffres().listIterator(e2.getChiffres().size()); // Iterator second nombre.
         ListIterator<Integer> i3 = i1; // Iterator final
         List<Integer> result = new ArrayList<>(); // Resultat.
@@ -73,11 +74,17 @@ public class GrandEntierListe implements IGrandEntier {
     }
 
     @Override
-    public void afficher() {
-
+    public String impression() {
+        return chiffres.toString();
     }
 
+    @Override
     public List<Integer> getChiffres() {
-        return chiffres;
+        return this.chiffres;
+    }
+
+    @Override
+    public String toString() {
+        return impression();
     }
 }
