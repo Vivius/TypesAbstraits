@@ -55,8 +55,8 @@ public class GrandEntierListe implements IGrandEntier {
         while(i3.hasPrevious()) {
             c1 = i1.previous();
             if(c1 + retenue > 9) {
-                retenue = c1 + retenue - 9;
-                result.add(0);
+                result.add((c1 + retenue) % 10);
+                retenue = (c1 + retenue) / 10;
             } else {
                 result.add(c1 + retenue);
                 retenue = 0;
