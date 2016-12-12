@@ -1,8 +1,9 @@
 package info530;
 
 /**
- * Created by Vincent on 12/12/2016.
+ * Représentation d'un grand entier sous forme de chaîne de caractères implémentant l'interface INombre.
  */
+
 public class StringEntiers implements INombre {
     private String chaine;
 

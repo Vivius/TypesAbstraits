@@ -26,23 +26,30 @@ public class Main {
         /**
          * EXERCICE 2
          */
+
+        // ADDITION
         List<Integer> chiffres_a = new ArrayList<>();
         chiffres_a.add(2);
         chiffres_a.add(5);
         chiffres_a.add(8);
-
-        List<Integer> chiffres_b = new ArrayList<>();
-        chiffres_b.add(9);
-        chiffres_b.add(9);
-
-        String chiffres_c = "54";
+        String chiffres_b = "1258";
 
         IGrandEntier e1 = new GrandEntier(new ListeEntiers(chiffres_a));
-        IGrandEntier e2 = new GrandEntier(new StringEntiers(chiffres_c));
-        //e1.somme(e2);
-        //System.out.println("e1 + e2 = " + e1);
+        IGrandEntier e2 = new GrandEntier(new StringEntiers(chiffres_b));
 
-        e1.produit(e2);
-        System.out.println("e1 * e2 = " + e1);
+        e1.somme(e2);
+        System.out.println("e1 + e2 = " + e1);
+
+        // MULTIPLICATION
+        List<Integer> chiffres_c = new ArrayList<>();
+        chiffres_c.add(9);
+        chiffres_c.add(7);
+        String chiffres_d = "39115";
+
+        IGrandEntier e3 = new GrandEntier(new ListeEntiers(chiffres_c));
+        IGrandEntier e4 = new GrandEntier(new StringEntiers(chiffres_d));
+
+        e3.produit(e4);
+        System.out.println("e3 * e4 = " + e3);
     }
 }

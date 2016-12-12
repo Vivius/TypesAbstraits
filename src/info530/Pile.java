@@ -10,6 +10,10 @@ public class Pile<T> {
     private Stack<T> pile;
     private int capacite;
 
+    /**
+     * Constructeur d'un pile avec capacité limitée.
+     * @param capacite
+     */
     public Pile(int capacite) {
         this.pile = new Stack<T>();
         this.capacite = capacite;
@@ -32,12 +36,17 @@ public class Pile<T> {
 
     /**
      * Retourne l'élément se trouvant au sommet de la pile.
+     * Il sera également retiré de la pile.
      * @return
      */
     public T retirer() {
         return this.pile.pop();
     }
 
+    /**
+     * Réécriture de toString...
+     * @return
+     */
     @Override
     public String toString() {
         return this.pile.toString();

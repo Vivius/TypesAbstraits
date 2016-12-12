@@ -4,8 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Vincent on 12/12/2016.
+ * Représentation d'un grand entier sous forme d'une liste chaînée implémentant l'interface INombre.
  */
+
 public class ListeEntiers implements INombre {
     private List<Integer> liste;
 
