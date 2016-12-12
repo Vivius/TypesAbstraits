@@ -21,7 +21,7 @@ public class Main {
         pile.ajouter(9);
         pile.ajouter(10);
         pile.ajouter(11);
-        System.out.println(pile);
+        System.out.println("Pile finale : " + pile);
 
         /**
          * EXERCICE 2
@@ -37,6 +37,7 @@ public class Main {
         IGrandEntier e1 = new GrandEntier(new ListeEntiers(chiffres_a));
         IGrandEntier e2 = new GrandEntier(new StringEntiers(chiffres_b));
 
+        System.out.println("e1 = " + e1 + ", e2 = " + e2);
         e1.somme(e2);
         System.out.println("e1 + e2 = " + e1);
 
@@ -49,6 +50,7 @@ public class Main {
         IGrandEntier e3 = new GrandEntier(new ListeEntiers(chiffres_c));
         IGrandEntier e4 = new GrandEntier(new StringEntiers(chiffres_d));
 
+        System.out.println("e3 = " + e3 + ", e4 = " + e4);
         e3.produit(e4);
         System.out.println("e3 * e4 = " + e3);
     }
