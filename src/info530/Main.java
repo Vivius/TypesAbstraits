@@ -32,7 +32,10 @@ public class Main {
         chiffres_a.add(2);
         chiffres_a.add(5);
         chiffres_a.add(8);
-        String chiffres_b = "1258";
+        chiffres_a.add(7);
+        chiffres_a.add(2);
+        chiffres_a.add(1);
+        String chiffres_b = "1258987523";
 
         IGrandEntier e1 = new GrandEntier(new ListeEntiers(chiffres_a));
         IGrandEntier e2 = new GrandEntier(new StringEntiers(chiffres_b));
@@ -45,7 +48,23 @@ public class Main {
         List<Integer> chiffres_c = new ArrayList<>();
         chiffres_c.add(6);
         chiffres_c.add(7);
-        String chiffres_d = "39986164";
+        chiffres_c.add(5);
+        chiffres_c.add(1);
+        chiffres_c.add(4);
+        chiffres_c.add(2);
+        chiffres_c.add(8);
+        chiffres_c.add(9);
+        chiffres_c.add(6);
+        chiffres_c.add(7);
+        chiffres_c.add(5);
+        chiffres_c.add(1);
+        chiffres_c.add(4);
+        chiffres_c.add(2);
+        chiffres_c.add(8);
+        chiffres_c.add(9);
+        chiffres_c.add(6);
+
+        String chiffres_d = "3998616456499876312649898761312";
 
         IGrandEntier e3 = new GrandEntier(new ListeEntiers(chiffres_c));
         IGrandEntier e4 = new GrandEntier(new StringEntiers(chiffres_d));
