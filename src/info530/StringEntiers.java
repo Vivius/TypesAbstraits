@@ -33,6 +33,11 @@ public class StringEntiers implements INombre {
     }
 
     @Override
+    public void reset() {
+        chaine = "";
+    }
+
+    @Override
     public String toString() {
         return chaine;
     }

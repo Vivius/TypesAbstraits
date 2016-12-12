@@ -8,4 +8,5 @@ public interface INombre {
     void add(Integer element); // Ajoute un chiffre à 'droite' du nombre actuel.
     void reverse(); // Inverse l'ordre d'affichage du résultat.
     int size(); // Obtient le nombre de chiffres du nombre.
+    void reset();
 }

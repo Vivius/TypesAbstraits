@@ -35,6 +35,11 @@ public class ListeEntiers implements INombre {
     }
 
     @Override
+    public void reset() {
+        liste.clear();
+    }
+
+    @Override
     public String toString() {
         String nombre = "";
         for(Integer i : liste) {

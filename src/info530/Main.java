@@ -43,9 +43,9 @@ public class Main {
 
         // MULTIPLICATION
         List<Integer> chiffres_c = new ArrayList<>();
-        chiffres_c.add(9);
+        chiffres_c.add(6);
         chiffres_c.add(7);
-        String chiffres_d = "39115";
+        String chiffres_d = "39986164";
 
         IGrandEntier e3 = new GrandEntier(new ListeEntiers(chiffres_c));
         IGrandEntier e4 = new GrandEntier(new StringEntiers(chiffres_d));

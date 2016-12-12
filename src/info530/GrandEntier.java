@@ -87,22 +87,60 @@ public class GrandEntier implements IGrandEntier {
 
     /**
      * Multiplication du grand entier actuel avec celui spécifié en paramètre.
-     * @param e
+     * @param other
      */
     @Override
-    public void produit(IGrandEntier e) {
-        if(!e.toString().equals("0") && !this.toString().equals("0")) {
-            // Copie du nombre de base.
-            IGrandEntier nbOrigine = new GrandEntier(new StringEntiers(getNombre().toString()));
-            // Chiffre 1.
-            IGrandEntier un = new GrandEntier(new StringEntiers("1"));
-            // Compteur partant de 1
-            IGrandEntier compteur = new GrandEntier(new StringEntiers("1"));
+    public void produit(IGrandEntier other) {
+        // Liste des nombres qui seront additionés entre eux.
+        List<IGrandEntier> numbers = new ArrayList<>();
+        // Nombre temporaire qui sera utilisé lors des calculs.
+        IGrandEntier nbTemp = new GrandEntier(new ListeEntiers(new ArrayList<>()));
+        // Résultat final.
+        IGrandEntier result = new GrandEntier(new StringEntiers("0"));
+        // Variables nécessaires pour le calcul.
+        Integer retenue = 0, cTemp, cHaut, cBas, cActuel, cpt = 0;
 
-            while (!compteur.toString().equals(e.toString())) {
-                compteur.somme(un);
-                this.somme(nbOrigine);
+        // On vérifie si un des nombres vaut 0 avant d'aller plus loin.
+        if(!other.toString().equals("0") && !this.toString().equals("0")) {
+            // Parcours de chaque chiffre du nombre de base (situé en haut pour la multiplication à la main).
+            for(int i = getNombre().size()-1; i >= 0; i--) {
+                cBas = getNombre().get(i);
+                //System.out.println("Nb bas = " + cBas);
+                // Parcours de chaque chiffre de l'autre nombre (situé en bas pour la multiplication à la main).
+                for(int j = other.getNombre().size()-1; j >= 0; j--) {
+                    cHaut = other.getNombre().get(j);
+                    //System.out.println("    Nb haut = " + cHaut);
+                    cTemp = cBas * cHaut;
+                    cActuel = (cTemp + retenue) % 10;
+                    //System.out.println("        cActuel = " + cActuel);
+                    retenue = (cTemp + retenue) / 10;
+                    //System.out.println("        retenue = " + retenue);
+                    nbTemp.getNombre().add(cActuel); // Construction du nombre actuel chiffre par chiffre.
+                }
+                // Ajout de la retenue en dernier pour le nombre actuel si différent de 0.
+                if(retenue != 0)
+                    nbTemp.getNombre().add(retenue);
+                retenue = 0; // On remet à 0 pour les traitement ultérieurs.
+
+                nbTemp.getNombre().reverse(); // On construit le résultat dans le bon sens de lecture.
+                //System.out.println("Nb temp  = " + nbTemp);
+                numbers.add(nbTemp); // Ajout du résultat aux résultats à additioner à la fin.
+
+                // Réinitialisation du nombre temporaire.
+                nbTemp = new GrandEntier(new ListeEntiers(new ArrayList<>()));
+
+                cpt++; // On indique qu'il faudra ajouter un 0 de plus au début du prochain nombre.
+                for(int j = 0; j < cpt; j++) // Ajout des 0.
+                    nbTemp.getNombre().add(0);
             }
+
+            // On fait la somme finale de tous les résultats trouvés.
+            for (int i = 0; i < numbers.size(); i++) {
+                //System.out.println(i + " = " + numbers.get(i));
+                result.somme(numbers.get(i));
+            }
+
+            nombre = result.getNombre();
         } else {
             nombre = new StringEntiers("0");
         }
