@@ -3,7 +3,7 @@ package info530;
 import java.util.Stack;
 
 /**
- * Created by Vincent on 11/12/2016.
+ * Pile avec capacité limitée.
  */
 
 public class Pile<T> {
