@@ -11,5 +11,5 @@ public interface IGrandEntier {
     void produit(IGrandEntier e);
     String impression();
 
-    List<Integer> getChiffres();
+    INombre getNombre();
 }

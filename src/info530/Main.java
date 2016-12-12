@@ -35,12 +35,12 @@ public class Main {
         chiffres_b.add(9);
         chiffres_b.add(9);
 
-        Integer[] chiffres_c = {9,9,8,7,6,9,8,5};
+        String chiffres_c = "54";
 
-        IGrandEntier e1 = new GrandEntier(chiffres_a);
-        IGrandEntier e2 = new GrandEntier(chiffres_c);
+        IGrandEntier e1 = new GrandEntier(new ListeEntiers(chiffres_a));
+        IGrandEntier e2 = new GrandEntier(new StringEntiers(chiffres_c));
         //e1.somme(e2);
-        System.out.println("e1 + e2 = " + e1);
+        //System.out.println("e1 + e2 = " + e1);
 
         e1.produit(e2);
         System.out.println("e1 * e2 = " + e1);

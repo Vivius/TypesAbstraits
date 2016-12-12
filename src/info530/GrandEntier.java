@@ -7,32 +7,39 @@ import java.util.*;
  */
 
 public class GrandEntier implements IGrandEntier {
-    private List<Integer> chiffres;
+    private INombre nombre;
 
     // Implémentation avec une liste.
-    public GrandEntier(List<Integer> chiffres) {
-        this.chiffres = chiffres;
+    public GrandEntier(ListeEntiers nombre) {
+        this.nombre = nombre;
     }
 
     // Implémentation avec un tableau.
-    public GrandEntier(Integer[] chiffres) {
-        this.chiffres = Arrays.asList(chiffres);
+    public GrandEntier(StringEntiers nombre) {
+        this.nombre = nombre;
     }
 
     @Override
-    public void somme(IGrandEntier e2) {
-        ListIterator<Integer> i1 = getChiffres().listIterator(getChiffres().size()); // Iterator premier nombre.
-        ListIterator<Integer> i2 = e2.getChiffres().listIterator(e2.getChiffres().size()); // Iterator second nombre.
-        ListIterator<Integer> i3 = i1; // Iterator final
-        List<Integer> result = new ArrayList<>(); // Resultat.
+    public void somme(IGrandEntier other) {
+        INombre result = new ListeEntiers(new ArrayList<>()); // Resultat.
+        INombre last = null;
+        Integer retenue = 0, c1, c2;
+        int sizeMin, sizeMax, indexThis, indexOther, limit;
 
-        Integer retenue = 0;
-        Integer c1, c2;
+        if(getNombre().size() <= other.getNombre().size()) {
+            sizeMin = getNombre().size();
+            sizeMax = other.getNombre().size();
+        } else {
+            sizeMin = other.getNombre().size();
+            sizeMax = getNombre().size();
+        }
+
+        limit = sizeMax - sizeMin;
 
         // On fait l'addition unité par unité en gardant la retenue...
-        while(i1.hasPrevious() && i2.hasPrevious()) {
-            c1 = i1.previous();
-            c2 = i2.previous();
+        for(indexThis = getNombre().size() - 1, indexOther = other.getNombre().size() - 1; indexThis >= 0 && indexOther >= 0; indexOther--, indexThis--) {
+            c1 = getNombre().get(indexThis);
+            c2 = other.getNombre().get(indexOther);
 
             if(c1 + c2 + retenue > 9) {
                 result.add((c1 + c2 + retenue) % 10);
@@ -44,15 +51,15 @@ public class GrandEntier implements IGrandEntier {
         }
 
         // On regarde ce qu'il reste à traiter.
-        if(this.getChiffres().size() > e2.getChiffres().size()) {
-            i3 = i1;
+        if(getNombre().size() > other.getNombre().size()) {
+            last = getNombre();
         } else {
-            i3 = i2;
+            last = other.getNombre();
         }
 
         // On traite la suite d'un des 2 nombre si elle existe.
-        while(i3.hasPrevious()) {
-            c1 = i1.previous();
+        for(int i = limit - 1; i >= 0; i--) {
+            c1 = last.get(i);
             if(c1 + retenue > 9) {
                 result.add((c1 + retenue) % 10);
                 retenue = (c1 + retenue) / 10;
@@ -66,37 +73,37 @@ public class GrandEntier implements IGrandEntier {
             result.add(retenue);
 
         // On inverse l'ordre de la liste car on l'a remplie de gauche à droite et pas de droite à gauche...
-        Collections.reverse(result);
-        this.chiffres = result;
+        result.reverse();
+        nombre = result;
     }
 
     @Override
     public void produit(IGrandEntier e) {
-        // Copie du nombre de base.
-        IGrandEntier e1 = new GrandEntier(this.getChiffres());
-        // Chiffre 1.
-        IGrandEntier un = new GrandEntier(new Integer[] {1});
-        // Compteur partant de 1
-        IGrandEntier compteur = new GrandEntier(new Integer[] {1});
 
-        while (!compteur.toString().equals(e.toString())) {
-            compteur.somme(un);
-            this.somme(e1);
+        if(!e.toString().equals("0") && !this.toString().equals("0")) {
+            // Copie du nombre de base.
+            IGrandEntier nbOrigine = new GrandEntier(new StringEntiers(getNombre().toString()));
+            // Chiffre 1.
+            IGrandEntier un = new GrandEntier(new StringEntiers("1"));
+            // Compteur partant de 1
+            IGrandEntier compteur = new GrandEntier(new StringEntiers("1"));
+
+            while (!compteur.toString().equals(e.toString())) {
+                compteur.somme(un);
+                this.somme(nbOrigine);
+            }
+        } else {
+            nombre = new StringEntiers("0");
         }
     }
 
     @Override
     public String impression() {
-        String nombre = "";
-        for(Integer i : getChiffres()) {
-            nombre += i;
-        }
-        return nombre;
+        return nombre.toString();
     }
 
-    @Override
-    public List<Integer> getChiffres() {
-        return this.chiffres;
+    public INombre getNombre() {
+        return this.nombre;
     }
 
     @Override
