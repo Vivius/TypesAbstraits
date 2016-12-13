@@ -9,13 +9,8 @@ import java.util.*;
 public class GrandEntier implements IGrandEntier {
     private INombre nombre;
 
-    // Implémentation avec une liste chaînée.
-    public GrandEntier(ListeEntiers nombre) {
-        this.nombre = nombre;
-    }
-
-    // Implémentation avec un chaîne de caractères simple.
-    public GrandEntier(StringEntiers nombre) {
+    // Constructeur générique.
+    public GrandEntier(INombre nombre) {
         this.nombre = nombre;
     }
 
