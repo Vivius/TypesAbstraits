@@ -3,7 +3,7 @@ package info530;
 import java.util.Stack;
 
 /**
- * Pile avec capacité limitée.
+ * Pile générique avec capacité limitée.
  */
 
 public class Pile<T> {
@@ -25,7 +25,7 @@ public class Pile<T> {
      * @param element
      * @return
      */
-    public boolean ajouter(T element) {
+    public boolean empiler(T element) {
         if(this.pile.size() < this.capacite) {
             this.pile.push(element);
             return true;
@@ -39,8 +39,24 @@ public class Pile<T> {
      * Il sera également retiré de la pile.
      * @return
      */
-    public T retirer() {
+    public T depiler() {
         return this.pile.pop();
+    }
+
+    /**
+     * Retourne l'élément au sommet de la pile sans le supprimer.
+     * @return
+     */
+    public T sommet() {
+        return this.pile.peek();
+    }
+
+    /**
+     * Indique si la pile est vide ou non.
+     * @return
+     */
+    public boolean vide() {
+        return this.pile.empty();
     }
 
     /**

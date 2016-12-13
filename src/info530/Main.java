@@ -10,18 +10,19 @@ public class Main {
          * EXERCICE 1
          */
         Pile<Integer> pile = new Pile<>(10);
-        pile.ajouter(1);
-        pile.ajouter(2);
-        pile.ajouter(3);
-        pile.ajouter(4);
-        pile.ajouter(5);
-        pile.ajouter(6);
-        pile.ajouter(7);
-        pile.ajouter(8);
-        pile.ajouter(9);
-        pile.ajouter(10);
-        pile.ajouter(11);
+        pile.empiler(1);
+        pile.empiler(2);
+        pile.empiler(3);
+        pile.empiler(4);
+        pile.empiler(5);
+        pile.empiler(6);
+        pile.empiler(7);
+        pile.empiler(8);
+        pile.empiler(9);
+        pile.empiler(10);
+        pile.empiler(11);
         System.out.println("Pile finale : " + pile);
+        System.out.println("Sommet pile  : " + pile.sommet());
 
         /**
          * EXERCICE 2
